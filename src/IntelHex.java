@@ -27,6 +27,32 @@ public class IntelHex {
 
 
     /*Private methods*/
+    private int hexToInt(String s){
+        int nInt = 0;
+        int buffInt = 0;
+        int cnt = 0;
+        char buffCH;
+
+        while( (( s.length()-1) - cnt) != -1 ){
+            buffCH = s.charAt(( s.length()-1) - cnt);
+            if((int)buffCH >=(int)'0' && (int)buffCH <= (int)'9'){
+                buffInt = (int)buffCH - (int)'0';
+                nInt += buffInt * (int)Math.pow(16, cnt);
+            }else{
+                if((int)buffCH >=(int)'A' && (int)buffCH <= (int)'F'){
+                    buffInt = 10 + ((int)buffCH - (int)'A');
+
+                    nInt += buffInt * (int)Math.pow(16, cnt);
+                }
+            }
+            cnt++;
+        }
+        return nInt;
+    }
+
+//    private int nData(String){
+//
+//    }
 
     private String getStartCode(String s){
             s = ""+s.charAt(0);
